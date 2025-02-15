@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../entities/category.dart';
 import '../../router/route_names.dart';
 import '../../services/data_api.dart';
 import '../../style/colors.dart';
@@ -23,8 +22,29 @@ class ProductsHomePage extends StatelessWidget {
           'Home',
           style: AppTextStyles.h3,
         ),
-        actions: const [
-          CartBadge(),
+        actions: [
+          Consumer(
+            builder: (context, ref, child) {
+              final cartItemCount = ref.watch(shoppingCartProvider).length;
+
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Badge(
+                  isLabelVisible: cartItemCount > 0,
+                  textColor: AppColors.white,
+                  label: Text(
+                    cartItemCount.toString(),
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  child: InkWell(
+                      onTap: () {
+                        context.pushNamed(RouteNames.cart);
+                      },
+                      child: const Icon(Icons.shopping_cart_outlined)),
+                ),
+              );
+            },
+          ),
         ],
       ),
       body: const Column(
@@ -35,38 +55,6 @@ class ProductsHomePage extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class CartBadge extends StatelessWidget {
-  const CartBadge({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Consumer(
-      builder: (context, ref, child) {
-        final cartItemCount = ref.watch(shoppingCartProvider).length;
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Badge(
-            isLabelVisible: cartItemCount > 0,
-            textColor: AppColors.white,
-            label: Text(
-              cartItemCount.toString(),
-              style: const TextStyle(color: Colors.white),
-            ),
-            child: child,
-          ),
-        );
-      },
-      child: InkWell(
-          onTap: () {
-            context.pushNamed(RouteNames.cart);
-          },
-          child: const Icon(Icons.shopping_cart_outlined)),
     );
   }
 }

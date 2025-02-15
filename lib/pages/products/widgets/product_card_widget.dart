@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../entities/product.dart';
-import '../../../router/app_router.dart';
 import '../../../router/route_names.dart';
 import '../../../style/app_image.dart';
 import '../../../style/colors.dart';
 import '../../../style/texts.dart';
 
-class ProductCardWidget extends StatelessWidget {
+class ProductCardWidget extends ConsumerWidget {
   const ProductCardWidget({
     required this.product,
     required this.index,
@@ -19,9 +19,10 @@ class ProductCardWidget extends StatelessWidget {
   final int index;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Card(
       color: AppColors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
         onTap: () {
           context.pushNamed(RouteNames.productDetail, extra: product);
@@ -36,9 +37,10 @@ class ProductCardWidget extends StatelessWidget {
                       topLeft: Radius.circular(12),
                       topRight: Radius.circular(12)),
                   child: AppImage.network(
+                    height: 190,
                     progressIndicatorBuilder: (context, url, progress) {
                       return const SizedBox(
-                        height: 200,
+                        height: 190,
                         child: Center(child: Text('Loading..')),
                       );
                     },
@@ -47,6 +49,7 @@ class ProductCardWidget extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                       child: Column(

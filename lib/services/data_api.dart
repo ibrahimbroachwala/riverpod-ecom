@@ -70,10 +70,10 @@ class DataApi implements DataRepo {
           price: (2 * random).toDouble(),
           description: productDescriptions[category.name]?[random] ?? '',
           imageUrls: [
-            'https://picsum.photos/id/1$id/200',
-            'https://picsum.photos/id/2$id/200',
-            'https://picsum.photos/id/3$id/200',
-            'https://picsum.photos/id/4$id/200',
+            'https://picsum.photos/id/1${Random().nextInt(10)}/200',
+            'https://picsum.photos/id/2${Random().nextInt(10)}/200',
+            'https://picsum.photos/id/3${Random().nextInt(10)}/200',
+            'https://picsum.photos/id/4${Random().nextInt(10)}/200',
           ],
           category: category);
     });
@@ -95,10 +95,10 @@ class DataApi implements DataRepo {
           price: (2 * random).toDouble(),
           description: productDescriptions[category]?[random] ?? '',
           imageUrls: [
-            'https://picsum.photos/id/1$id/200',
-            'https://picsum.photos/id/2$id/200',
-            'https://picsum.photos/id/3$id/200',
-            'https://picsum.photos/id/4$id/200',
+            'https://picsum.photos/id/1${Random().nextInt(10)}/200',
+            'https://picsum.photos/id/2${Random().nextInt(10)}/200',
+            'https://picsum.photos/id/3${Random().nextInt(10)}/200',
+            'https://picsum.photos/id/4${Random().nextInt(10)}/200',
           ],
           category: ProductCategory.values.firstWhere((c) => c.name == category,
               orElse: () => ProductCategory.values[0]));
