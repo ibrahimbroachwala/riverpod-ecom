@@ -10,9 +10,9 @@ void showFloatingSnackBar(BuildContext context, String message) {
       style: AppTextStyles.p3.colored(AppColors.white),
     ),
     closeIconColor: AppColors.black,
-    backgroundColor: AppColors.successGreen,
+    backgroundColor: Colors.green[500],
     behavior: SnackBarBehavior.floating,
-    padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+    padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(12),
     ),

@@ -71,7 +71,7 @@ class ProductCardWidget extends ConsumerWidget {
                     ),
                     Text(
                       '\$${product.price.toStringAsFixed(2)}',
-                      style: AppTextStyles.p4,
+                      style: AppTextStyles.p4.bold.colored(AppColors.primary),
                     ),
                   ],
                 ),
