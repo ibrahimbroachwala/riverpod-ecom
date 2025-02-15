@@ -1,0 +1,12 @@
+# Trigger code generation
+# flutter packages pub run build_runner build --delete-conflicting-outputs
+# Configuration for 'flutter_launcher_icons'
+# Run icon generation with 'flutter pub run flutter_launcher_icons:main'
+flutter_launcher_icons:
+  image_path_android: "assets/icons/android_icon.png"
+  image_path_ios: "assets/icons/ios_icon.png"
+  adaptive_icon_background: '#2592B4'
+  adaptive_icon_foreground: 'assets/icons/android_icon.png'
+  android: true # can specify file name here e.g. "ic_launcher"
+  ios: true # can specify file name here e.g. "My-Launcher-Icon"
+  remove_alpha_ios: true
